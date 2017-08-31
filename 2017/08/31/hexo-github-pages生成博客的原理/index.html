@@ -3,18 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo+github pages生成博客的原理 | Hexo</title>
+  <title>初识Hexo | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="hexo">
+  <meta name="description" content="最近利用hexo在github上搭了个博客，看了网上的教程，兜兜转转的也跑起来了。但是不清楚为啥就能够通过github pages，然后就成了一个博客？？？下面来看看hexo和github pages的原理~ 什么是HexoHexo 是一个简单地、轻量地、基于Node的一个静态博客框架，可以方便的生成静态网页托管在github上 什么是github pages github pages 可以被认为">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github pages生成博客的原理">
+<meta property="og:title" content="初识Hexo">
 <meta property="og:url" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-github-pages生成博客的原理/hexo-ge.png">
-<meta property="og:updated_time" content="2017-08-31T14:33:07.185Z">
+<meta property="og:description" content="最近利用hexo在github上搭了个博客，看了网上的教程，兜兜转转的也跑起来了。但是不清楚为啥就能够通过github pages，然后就成了一个博客？？？下面来看看hexo和github pages的原理~ 什么是HexoHexo 是一个简单地、轻量地、基于Node的一个静态博客框架，可以方便的生成静态网页托管在github上 什么是github pages github pages 可以被认为">
+<meta property="og:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-generate.png">
+<meta property="og:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-lang.png">
+<meta property="og:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-ge.png">
+<meta property="og:updated_time" content="2017-08-31T17:10:31.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github pages生成博客的原理">
-<meta name="twitter:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-github-pages生成博客的原理/hexo-ge.png">
+<meta name="twitter:title" content="初识Hexo">
+<meta name="twitter:description" content="最近利用hexo在github上搭了个博客，看了网上的教程，兜兜转转的也跑起来了。但是不清楚为啥就能够通过github pages，然后就成了一个博客？？？下面来看看hexo和github pages的原理~ 什么是HexoHexo 是一个简单地、轻量地、基于Node的一个静态博客框架，可以方便的生成静态网页托管在github上 什么是github pages github pages 可以被认为">
+<meta name="twitter:image" content="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/hexo-generate.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -77,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo+github pages生成博客的原理
+      初识Hexo
     </h1>
   
 
@@ -85,12 +90,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2017/08/31/hexo-github-pages生成博客的原理/./hexo-github-pages生成博客的原理/hexo-ge.png" alt="你想输入的替代文字"></p>
+        <p>最近利用hexo在github上搭了个博客，看了网上的教程，兜兜转转的也跑起来了。但是不清楚为啥就能够通过github pages，然后就成了一个博客？？？下面来看看hexo和github pages的原理~</p>
+<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h2><p>Hexo 是一个简单地、轻量地、基于Node的一个静态博客框架，可以方便的生成静态网页托管在github上</p>
+<h2 id="什么是github-pages"><a href="#什么是github-pages" class="headerlink" title="什么是github pages"></a>什么是github pages</h2><ul>
+<li>github pages 可以被认为是用户编写的、托管在github上的静态网页。由于它的空间免费稳定， 可以用于介绍托管在github上的Project或者搭建网站</li>
+<li>github pages支持静态页面的解析（可以直接写html文件push到github上）</li>
+</ul>
+<h2 id="Hexo是怎么从markdown编译成html的"><a href="#Hexo是怎么从markdown编译成html的" class="headerlink" title="Hexo是怎么从markdown编译成html的"></a>Hexo是怎么从markdown编译成html的</h2><p>简单的说，从markdown到html，hexo的generate做了两步工作</p>
+<ol>
+<li>模板渲染</li>
+<li>模板渲染<br>没错，确实是做了两步渲染，但是两次渲染的输入、渲染模板的引擎、输出不一样。如下图所示：<br><img src="/2017/08/31/hexo-github-pages生成博客的原理/./hexo-generate.png" alt="编译过程中的两次渲染"></li>
+</ol>
+<p><img src="/2017/08/31/hexo-github-pages生成博客的原理/./hexo-lang.png" alt="标记语言"></p>
+<p>上表和图说明：</p>
+<ul>
+<li>hexo core在generate的过程中会产生一个对象，我们在这里把这个对象称为article。第一次渲染的主要目的就是给这个对象添加title,content等属性。<ol>
+<li>article.title, article.date, article.tags, article.categories等属性来自yml front的部分</li>
+<li>article.content是markdown文章解析后的html片段</li>
+</ol>
+</li>
+<li>hexo项目目录下包含三个子目录<ol>
+<li><strong>source目录：</strong>写博客的目录。存放markdown、图片、css+js（这两个目前没用的过）</li>
+<li><strong>themes目录：</strong>主题目录，定义了即将生成的html的layout, 和html中需要加载的css, js, images</li>
+<li><strong>public目录：</strong>编译后的输出目录，包含了整个博客网站的html, css, js, images</li>
+</ol>
+</li>
+<li><strong>第二次渲染</strong>，需要引入对应模板文件格式的插件<ol>
+<li>.ejs文件就需要使用hexo-render-ejs插件</li>
+<li>.jade文件需要使用hexo-render-jade插件</li>
+<li>.sass文件则需要hexo-render-sass插件来转换成css文件</li>
+</ol>
+</li>
+</ul>
+<h2 id="markdown到github-pages"><a href="#markdown到github-pages" class="headerlink" title="markdown到github pages"></a>markdown到github pages</h2><p><img src="/2017/08/31/hexo-github-pages生成博客的原理/./hexo-ge.png" alt="由markdown到github pages"></p>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://coderunthings.com/2017/08/20/howhexoworks/" target="_blank" rel="external">hexo是怎么工作的</a></li>
+<li><a href="https://hexo.io/" target="_blank" rel="external">hexo官网</a></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/" data-id="cj70jwifw0003jwuugrqx0vip" class="article-share-link">Share</a>
+      <a data-url="http://2582056905xy.github.io/2017/08/31/hexo-github-pages生成博客的原理/" data-id="cj70pjsul000284uu8rajmykz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -155,7 +197,7 @@
       <ul>
         
           <li>
-            <a href="/2017/08/31/hexo-github-pages生成博客的原理/">hexo+github pages生成博客的原理</a>
+            <a href="/2017/08/31/hexo-github-pages生成博客的原理/">初识Hexo</a>
           </li>
         
           <li>
